@@ -2,10 +2,6 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-
-
-
-
  */
 package Cinema;
 
@@ -42,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Film.findByIdfilm", query = "SELECT f FROM Film f WHERE f.idfilm = :idfilm")
     , @NamedQuery(name = "Film.findByIdrealisateur", query = "SELECT f FROM Film f WHERE f.idrealisateur = :idrealisateur")
     , @NamedQuery(name = "Film.findByNomfilm", query = "SELECT f FROM Film f WHERE f.nomfilm = :nomfilm")
-    , @NamedQuery(name = "Film.findByDatediffusion", query = "SELECT f FROM Film f WHERE f.datediffusion = :datediffusion")})
+    , @NamedQuery(name = "Film.findByDatediffusion", query = "SELECT f FROM Film f WHERE f.datediffusion = :datediffusion")
+    , @NamedQuery(name = "Film.findByResumefilm", query = "SELECT f FROM Film f WHERE f.resumefilm = :resumefilm")})
 public class Film implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,6 +66,11 @@ public class Film implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "AFFICHEFILM")
     private String affichefilm;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10000)
+    @Column(name = "RESUMEFILM")
+    private String resumefilm;
     @OneToMany(mappedBy = "idfilm")
     private Collection<Bibliotheque> bibliothequeCollection;
 
@@ -79,11 +81,12 @@ public class Film implements Serializable {
         this.idfilm = idfilm;
     }
 
-    public Film(Integer idfilm, String nomfilm, Date datediffusion, String affichefilm) {
+    public Film(Integer idfilm, String nomfilm, Date datediffusion, String affichefilm, String resumefilm) {
         this.idfilm = idfilm;
         this.nomfilm = nomfilm;
         this.datediffusion = datediffusion;
         this.affichefilm = affichefilm;
+        this.resumefilm = resumefilm;
     }
 
     public Integer getIdfilm() {
@@ -124,6 +127,14 @@ public class Film implements Serializable {
 
     public void setAffichefilm(String affichefilm) {
         this.affichefilm = affichefilm;
+    }
+
+    public String getResumefilm() {
+        return resumefilm;
+    }
+
+    public void setResumefilm(String resumefilm) {
+        this.resumefilm = resumefilm;
     }
 
     @XmlTransient

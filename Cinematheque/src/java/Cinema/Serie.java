@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Serie.findByNbepisode", query = "SELECT s FROM Serie s WHERE s.nbepisode = :nbepisode")
     , @NamedQuery(name = "Serie.findByNbsaison", query = "SELECT s FROM Serie s WHERE s.nbsaison = :nbsaison")
     , @NamedQuery(name = "Serie.findByDatedebut", query = "SELECT s FROM Serie s WHERE s.datedebut = :datedebut")
-    , @NamedQuery(name = "Serie.findByDatefin", query = "SELECT s FROM Serie s WHERE s.datefin = :datefin")})
+    , @NamedQuery(name = "Serie.findByDatefin", query = "SELECT s FROM Serie s WHERE s.datefin = :datefin")
+    , @NamedQuery(name = "Serie.findByResumeserie", query = "SELECT s FROM Serie s WHERE s.resumeserie = :resumeserie")})
 public class Serie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -79,6 +80,11 @@ public class Serie implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "AFFICHESERIE")
     private String afficheserie;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10000)
+    @Column(name = "RESUMESERIE")
+    private String resumeserie;
     @OneToMany(mappedBy = "idserie")
     private Collection<Bibliotheque> bibliothequeCollection;
 
@@ -89,13 +95,14 @@ public class Serie implements Serializable {
         this.idserie = idserie;
     }
 
-    public Serie(Integer idserie, String nomserie, int nbepisode, int nbsaison, Date datedebut, String afficheserie) {
+    public Serie(Integer idserie, String nomserie, int nbepisode, int nbsaison, Date datedebut, String afficheserie, String resumeserie) {
         this.idserie = idserie;
         this.nomserie = nomserie;
         this.nbepisode = nbepisode;
         this.nbsaison = nbsaison;
         this.datedebut = datedebut;
         this.afficheserie = afficheserie;
+        this.resumeserie = resumeserie;
     }
 
     public Integer getIdserie() {
@@ -160,6 +167,14 @@ public class Serie implements Serializable {
 
     public void setAfficheserie(String afficheserie) {
         this.afficheserie = afficheserie;
+    }
+
+    public String getResumeserie() {
+        return resumeserie;
+    }
+
+    public void setResumeserie(String resumeserie) {
+        this.resumeserie = resumeserie;
     }
 
     @XmlTransient

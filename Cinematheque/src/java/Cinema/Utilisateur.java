@@ -141,5 +141,6 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "Cinema.Utilisateur[ iduser=" + iduser + " ]";
     }
+   
     
 }

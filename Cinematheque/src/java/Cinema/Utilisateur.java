@@ -7,6 +7,7 @@ package Cinema;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "Utilisateur")
+@ManagedBean
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Utilisateur.findAll", query = "SELECT u FROM Utilisateur u")
@@ -42,23 +44,23 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "IDUSER")
-    private Integer IDUSER;
+    @Column(name = "iduser")
+    private Integer iduser;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
-    @Column(name = "NOMUSER")
-    private String NOMUSER;
+    @Column(name = "nomuser")
+    private String nomuser;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
-    @Column(name = "PRENOMUSER")
-    private String PRENOMUSER;
+    @Column(name = "prenomuser")
+    private String prenomuser;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
-    @Column(name = "MDPUSER")
-    private String MDPUSER;
+    @Column(name = "mdpuser")
+    private String mdpuser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
     private Collection<Bibliotheque> bibliothequeCollection;
 
@@ -66,46 +68,46 @@ public class Utilisateur implements Serializable {
     }
 
     public Utilisateur(Integer iduser) {
-        this.IDUSER = iduser;
+        this.iduser = iduser;
     }
 
     public Utilisateur(Integer iduser, String nomuser, String prenomuser, String mdpuser) {
-        this.IDUSER = iduser;
-        this.NOMUSER = nomuser;
-        this.PRENOMUSER = prenomuser;
-        this.MDPUSER = mdpuser;
+        this.iduser = iduser;
+        this.nomuser = nomuser;
+        this.prenomuser = prenomuser;
+        this.mdpuser = mdpuser;
     }
 
     public Integer getIduser() {
-        return IDUSER;
+        return iduser;
     }
 
     public void setIduser(Integer iduser) {
-        this.IDUSER = iduser;
+        this.iduser = iduser;
     }
 
     public String getNomuser() {
-        return NOMUSER;
+        return nomuser;
     }
 
     public void setNomuser(String nomuser) {
-        this.NOMUSER = nomuser;
+        this.nomuser = nomuser;
     }
 
     public String getPrenomuser() {
-        return PRENOMUSER;
+        return prenomuser;
     }
 
     public void setPrenomuser(String prenomuser) {
-        this.PRENOMUSER = prenomuser;
+        this.prenomuser = prenomuser;
     }
 
     public String getMdpuser() {
-        return MDPUSER;
+        return mdpuser;
     }
 
     public void setMdpuser(String mdpuser) {
-        this.MDPUSER = mdpuser;
+        this.mdpuser = mdpuser;
     }
 
     @XmlTransient
@@ -120,7 +122,7 @@ public class Utilisateur implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (IDUSER != null ? IDUSER.hashCode() : 0);
+        hash += (iduser != null ? iduser.hashCode() : 0);
         return hash;
     }
 
@@ -131,7 +133,7 @@ public class Utilisateur implements Serializable {
             return false;
         }
         Utilisateur other = (Utilisateur) object;
-        if ((this.IDUSER == null && other.IDUSER != null) || (this.IDUSER != null && !this.IDUSER.equals(other.IDUSER))) {
+        if ((this.iduser == null && other.iduser != null) || (this.iduser != null && !this.iduser.equals(other.iduser))) {
             return false;
         }
         return true;
@@ -139,7 +141,7 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "Cinema.Utilisateur[ iduser=" + IDUSER + " ]";
+        return "Cinema.Utilisateur[ iduser=" + iduser + " ]";
     }
    
     

@@ -25,18 +25,18 @@
                     <p:panel header="Je m'inscris">
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="Nom :  *" />
-                                <p:inputText value="#{UtilisateurCtrl.utilisateur.nomuser}" required="true" label="Nom : "/>
+                                <p:inputText value="#{utilisateur.nomuser}" required="true" label="Nom : "/>
  
                                 <h:outputText value="Prénom :  *" />
-                                <p:inputText value="#{UtilisateurCtrl.utilisateur.prenomuser}" required="true" label="Prénom : "/>
+                                <p:inputText value="#{utilisateur.prenomuser}" required="true" label="Prénom : "/>
  
                                 <h:outputText value="Mot de passe :  *" />
-                                <p:password value="#{UtilisateurCtrl.utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
+                                <p:password value="#{utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
                             </h:panelGrid>
                         
                         
                         
-                        <p:commandButton value="C'est partie pour la folle aventure" action='#{UtilisateurCtrl.addUser()}'/>
+                        <p:commandButton value="C'est partie pour la folle aventure" action='#{UtilisateurCtrl.addUser(utilisateur)}'/>
                     </p:panel>
             
         </h:form>

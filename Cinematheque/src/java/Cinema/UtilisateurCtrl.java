@@ -7,6 +7,7 @@ package Cinema;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -21,19 +22,20 @@ import javax.inject.Named;
 @ViewScoped
 public class UtilisateurCtrl implements Serializable{
     
+    @EJB
     private UtilisateurDAO dao; 
     private Utilisateur selectedUser; 
     
     public UtilisateurCtrl() {
-        this.selectedUser = new Utilisateur();
+        //this.selectedUser = new Utilisateur();
     }
     
     public List<Utilisateur> getUser() {
         return dao.allUser();
     }
     
-    public void addUser() {
-        dao.add(this.selectedUser);
+    public void addUser(Utilisateur u) {
+        dao.add(u);
     }
 
     public UtilisateurDAO getDao() {

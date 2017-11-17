@@ -32,11 +32,6 @@ public class UtilisateurCtrl implements Serializable{
     public List<Utilisateur> getUser() {
         return dao.allUser();
     }
-
-    public UtilisateurCtrl(UtilisateurDAO dao, Utilisateur selectedUser) {
-        this.dao = dao;
-        this.selectedUser = selectedUser;
-    }
     
     public void addUser(Utilisateur u) {
         dao.add(u);
@@ -56,6 +51,15 @@ public class UtilisateurCtrl implements Serializable{
 
     public void setUser(Utilisateur selectedUser) {
         this.selectedUser = selectedUser;
+    }
+    
+    public void deleteUtilisateur(){
+        int id = selectedUser.getIduser();
+        dao.removeUtilisateur(id);
+    }
+    
+    public void modifUtilisateur(){
+        dao.updateUtilisateur(this.selectedUser);
     }
     
 }

@@ -24,8 +24,25 @@ public class UtilisateurDAO {
         return query.getResultList();
     }
     
+    public Utilisateur findUtilisateur(int id){
+        Query query = em.createNamedQuery("Utilisateur.findByIduser");
+        query.setParameter("iduser", id);
+        return (Utilisateur) query.getSingleResult();
+    }
+    
     public void add(Utilisateur u) {
         em.persist(u);
+        em.flush();
+    }
+    
+    public void removeUtilisateur(int id){
+        Utilisateur u = findUtilisateur(id);
+        em.remove(u);
+        em.flush();
+    }
+    
+    public void updateUtilisateur(Utilisateur u){
+        em.merge(u);
         em.flush();
     }
 }

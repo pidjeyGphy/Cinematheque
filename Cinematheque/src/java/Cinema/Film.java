@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Film.findAll", query = "SELECT f FROM Film f")
     , @NamedQuery(name = "Film.findByIdfilm", query = "SELECT f FROM Film f WHERE f.idfilm = :idfilm")
-    , @NamedQuery(name = "Film.findByIdrealisateur", query = "SELECT f FROM Film f WHERE f.idrealisateur = :idrealisateur")
     , @NamedQuery(name = "Film.findByNomfilm", query = "SELECT f FROM Film f WHERE f.nomfilm = :nomfilm")
     , @NamedQuery(name = "Film.findByDatediffusion", query = "SELECT f FROM Film f WHERE f.datediffusion = :datediffusion")
     , @NamedQuery(name = "Film.findByResumefilm", query = "SELECT f FROM Film f WHERE f.resumefilm = :resumefilm")})
@@ -48,8 +47,6 @@ public class Film implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDFILM")
     private Integer idfilm;
-    @Column(name = "IDREALISATEUR")
-    private Integer idrealisateur;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
@@ -95,14 +92,6 @@ public class Film implements Serializable {
 
     public void setIdfilm(Integer idfilm) {
         this.idfilm = idfilm;
-    }
-
-    public Integer getIdrealisateur() {
-        return idrealisateur;
-    }
-
-    public void setIdrealisateur(Integer idrealisateur) {
-        this.idrealisateur = idrealisateur;
     }
 
     public String getNomfilm() {

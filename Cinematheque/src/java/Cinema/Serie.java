@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Serie.findAll", query = "SELECT s FROM Serie s")
     , @NamedQuery(name = "Serie.findByIdserie", query = "SELECT s FROM Serie s WHERE s.idserie = :idserie")
-    , @NamedQuery(name = "Serie.findByIdrealisateur", query = "SELECT s FROM Serie s WHERE s.idrealisateur = :idrealisateur")
     , @NamedQuery(name = "Serie.findByNomserie", query = "SELECT s FROM Serie s WHERE s.nomserie = :nomserie")
     , @NamedQuery(name = "Serie.findByNbepisode", query = "SELECT s FROM Serie s WHERE s.nbepisode = :nbepisode")
     , @NamedQuery(name = "Serie.findByNbsaison", query = "SELECT s FROM Serie s WHERE s.nbsaison = :nbsaison")
@@ -51,8 +50,6 @@ public class Serie implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDSERIE")
     private Integer idserie;
-    @Column(name = "IDREALISATEUR")
-    private Integer idrealisateur;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
@@ -111,14 +108,6 @@ public class Serie implements Serializable {
 
     public void setIdserie(Integer idserie) {
         this.idserie = idserie;
-    }
-
-    public Integer getIdrealisateur() {
-        return idrealisateur;
-    }
-
-    public void setIdrealisateur(Integer idrealisateur) {
-        this.idrealisateur = idrealisateur;
     }
 
     public String getNomserie() {

@@ -34,7 +34,6 @@ public class UtilisateurCtrl implements Serializable{
     
     public void addUser() {
         dao.add(this.selectedUser);
-        this.selectedUser = new Utilisateur();
     }
 
     public UtilisateurDAO getDao() {

@@ -43,22 +43,22 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "IDUSER")
-    private Integer iduser;
+    private Integer IDUSER;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "NOMUSER")
-    private String nomuser;
+    private String NOMUSER;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "PRENOMUSER")
-    private String prenomuser;
+    private String PRENOMUSER;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "MDPUSER")
-    private String mdpuser;
+    private String MDPUSER;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
     private Collection<Bibliotheque> bibliothequeCollection;
 
@@ -66,46 +66,46 @@ public class Utilisateur implements Serializable {
     }
 
     public Utilisateur(Integer iduser) {
-        this.iduser = iduser;
+        this.IDUSER = iduser;
     }
 
     public Utilisateur(Integer iduser, String nomuser, String prenomuser, String mdpuser) {
-        this.iduser = iduser;
-        this.nomuser = nomuser;
-        this.prenomuser = prenomuser;
-        this.mdpuser = mdpuser;
+        this.IDUSER = iduser;
+        this.NOMUSER = nomuser;
+        this.PRENOMUSER = prenomuser;
+        this.MDPUSER = mdpuser;
     }
 
     public Integer getIduser() {
-        return iduser;
+        return IDUSER;
     }
 
     public void setIduser(Integer iduser) {
-        this.iduser = iduser;
+        this.IDUSER = iduser;
     }
 
     public String getNomuser() {
-        return nomuser;
+        return NOMUSER;
     }
 
     public void setNomuser(String nomuser) {
-        this.nomuser = nomuser;
+        this.NOMUSER = nomuser;
     }
 
     public String getPrenomuser() {
-        return prenomuser;
+        return PRENOMUSER;
     }
 
     public void setPrenomuser(String prenomuser) {
-        this.prenomuser = prenomuser;
+        this.PRENOMUSER = prenomuser;
     }
 
     public String getMdpuser() {
-        return mdpuser;
+        return MDPUSER;
     }
 
     public void setMdpuser(String mdpuser) {
-        this.mdpuser = mdpuser;
+        this.MDPUSER = mdpuser;
     }
 
     @XmlTransient
@@ -120,7 +120,7 @@ public class Utilisateur implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (iduser != null ? iduser.hashCode() : 0);
+        hash += (IDUSER != null ? IDUSER.hashCode() : 0);
         return hash;
     }
 
@@ -131,7 +131,7 @@ public class Utilisateur implements Serializable {
             return false;
         }
         Utilisateur other = (Utilisateur) object;
-        if ((this.iduser == null && other.iduser != null) || (this.iduser != null && !this.iduser.equals(other.iduser))) {
+        if ((this.IDUSER == null && other.IDUSER != null) || (this.IDUSER != null && !this.IDUSER.equals(other.IDUSER))) {
             return false;
         }
         return true;
@@ -139,7 +139,7 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "Cinema.Utilisateur[ iduser=" + iduser + " ]";
+        return "Cinema.Utilisateur[ iduser=" + IDUSER + " ]";
     }
    
     

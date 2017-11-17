@@ -12,16 +12,15 @@
     </h:head>
       
     <h:body>
-        Bienvenue sur Cinematheque, le site qui vous permet de gérer vos films et séries !
         <h:form>   
             <p:toolbar>
                 <f:facet name="right">
-                    <p:commandButton  value ="Connexion" icon="ui-icon-power" action="bibliotheque"/>
+                    <h:commandButton  value ="Connexion" action='connexion'/>
                 </f:facet>
             </p:toolbar>
+        </h:form>
             
-            
-            
+        <h:form>
                     <p:panel header="Je m'inscris">
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="Nom :  *" />
@@ -34,7 +33,7 @@
                                 <p:password value="#{utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
                             </h:panelGrid>
                         
-                        <p:commandButton value="C'est partie pour la folle aventure" action='#{UtilisateurCtrl.addUser(utilisateur)}'/>
+                        <h:commandButton value="C'est partie pour la folle aventure" action='#{UtilisateurCtrl.addUser(utilisateur)}'/>
                     </p:panel>
             
         </h:form>

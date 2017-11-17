@@ -12,12 +12,11 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 
-
-
 /**
  *
  * @author Jennifer
  */
+
 @Named(value = "UtilisateurCtrl")
 @ViewScoped
 public class UtilisateurCtrl implements Serializable{
@@ -27,11 +26,16 @@ public class UtilisateurCtrl implements Serializable{
     private Utilisateur selectedUser; 
     
     public UtilisateurCtrl() {
-        //this.selectedUser = new Utilisateur();
     }
+   
     
     public List<Utilisateur> getUser() {
         return dao.allUser();
+    }
+
+    public UtilisateurCtrl(UtilisateurDAO dao, Utilisateur selectedUser) {
+        this.dao = dao;
+        this.selectedUser = selectedUser;
     }
     
     public void addUser(Utilisateur u) {

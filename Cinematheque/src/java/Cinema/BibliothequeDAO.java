@@ -19,7 +19,7 @@ public class BibliothequeDAO {
     @PersistenceContext(unitName = "CinemathequePU")
     private EntityManager em;
     
-    public List<Bibliotheque> allUser() {
+    public List<Bibliotheque> allBiblio() {
         Query query = em.createNamedQuery("Bibliotheque.findAll");
         return query.getResultList();
     }
@@ -30,8 +30,8 @@ public class BibliothequeDAO {
         return (Bibliotheque) query.getSingleResult();
     }
     
-    public void add(Bibliotheque u) {
-        em.persist(u);
+    public void add(Bibliotheque b) {
+        em.persist(b);
         em.flush();
     }
     

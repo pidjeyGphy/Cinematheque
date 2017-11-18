@@ -28,12 +28,12 @@ public class BibliothequeCtrl implements Serializable{
     }
    
     
-    public List<Bibliotheque> getUser() {
-        return dao.allUser();
+    public List<Bibliotheque> getBibliotheques() {
+        return dao.allBiblio();
     }
     
-    public void addUser(Bibliotheque u) {
-        dao.add(u);
+    public void addBibliotheque(Bibliotheque b) {
+        dao.add(b);
     }
 
     public BibliothequeDAO getDao() {
@@ -48,7 +48,7 @@ public class BibliothequeCtrl implements Serializable{
         return selectedBiblio;
     }
 
-    public void setUser(Bibliotheque selectedBiblio) {
+    public void setBibliotheque(Bibliotheque selectedBiblio) {
         this.selectedBiblio = selectedBiblio;
     }
     

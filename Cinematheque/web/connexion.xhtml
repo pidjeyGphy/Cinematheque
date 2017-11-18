@@ -13,22 +13,24 @@ and open the template in the editor.
     <head>
         <title>Connexion</title>
     </head>
+    
+    <h:body>
+        <h:form>
+            <p:panel header="Je me connecte ! ">
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Nom :  *" />
+                    <p:inputText value="{utilisateur.nomuser}" required="true" label="Nom : "/>
 
+                    <h:outputText value="Mot de passe :  *" />
+                    <p:password value="{utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
+                </h:panelGrid>
 
-    <h:form>
-        <p:panel header="Je me connecte ! ">
-            <h:panelGrid columns="2" columnClasses="label, value">
-                <h:outputText value="Nom :  *" />
-                <p:inputText value="#{utilisateur.nomuser}" required="true" label="Nom : "/>
+                <h:commandButton value="Connexion" action='{UtilisateurCtrl.addUser(utilisateur)}'/>
 
-                <h:outputText value="Mot de passe :  *" />
-                <p:password value="#{utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
-            </h:panelGrid>
+            </p:panel>
 
-            <h:commandButton value="Connexion" action='#{UtilisateurCtrl.addUser(utilisateur)}'/>
-            
-        </p:panel>
+        </h:form>
+    </h:body>
 
-    </h:form>
 
 </html>

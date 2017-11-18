@@ -30,6 +30,13 @@ public class UtilisateurDAO {
         return (Utilisateur) query.getSingleResult();
     }
     
+    public Utilisateur findUtilisateurByNom(String nom){
+        Query query = em.createNamedQuery("Utilisateur.findByNomuser");
+        query.setParameter("nomuser", nom);
+        return (Utilisateur) query.getSingleResult();
+    }
+   
+    
     public void add(Utilisateur u) {
         em.persist(u);
         em.flush();

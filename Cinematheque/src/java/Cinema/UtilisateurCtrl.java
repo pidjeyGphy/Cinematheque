@@ -62,4 +62,31 @@ public class UtilisateurCtrl implements Serializable{
         dao.updateUtilisateur(this.selectedUser);
     }
     
-}
+//    public void chercheUtilisateur(String nomu, String mdp){
+//        try 
+//        {
+//            Utilisateur u = dao.findUtilisateurByNom(nomu);
+//            try{
+//                u.getMdpuser() = mdp;
+//            } 
+//            catch(ClassCastException e){
+//                System.out.println("Ce mot de passe n'est pas connu de la base de données");
+//            }
+//                
+//        }
+//        catch(ClassCastException e)
+//        {
+//          System.out.println("Ce nom n'est pas connu de la base de données");
+//        }
+        
+        
+      
+        // Catch sur l'utilisateur pour savoir si l'utilisateur existe
+        // Vérification de la cohérence du mot de passe
+      
+   
+      
+    
+    }
+    
+

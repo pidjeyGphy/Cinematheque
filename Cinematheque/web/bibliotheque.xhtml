@@ -25,7 +25,13 @@ and open the template in the editor.
                 
                 <p:panel header="#{filmo.nomfilm}" style="text-align:center">
                     <h:panelGrid columns="1" style="width:100%">
-                        <p:graphicImage name="{film.affichefilm}"/>
+                        
+                        <p:contentFlow value="#{imagesView.pictures}" var="pic" style="background-color: #F0FFF0" >
+                            <p:graphicImage value="images/#{pic}" styleClass="content" />
+                            <div class="caption">#{pic}</div>
+                        </p:contentFlow>
+                        
+                        <p:graphicImage name="Cinematheque/images/#{filmo.affichefilm}.jpg"/>
                         
                         <h:outputText value="#{filmo.datediffusion}"/>
                         

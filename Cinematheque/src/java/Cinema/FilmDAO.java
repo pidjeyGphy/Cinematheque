@@ -19,7 +19,7 @@ public class FilmDAO {
     @PersistenceContext(unitName = "CinemathequePU")
     private EntityManager em;
     
-    public List<Film> allFilm() {
+    public List<Film> getAllFilm() {
         Query query = em.createNamedQuery("Film.findAll");
         return query.getResultList();
     }

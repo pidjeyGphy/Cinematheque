@@ -20,27 +20,27 @@ import javax.inject.Named;
 public class FilmCtrl implements Serializable{
     
     @EJB
-    private FilmDAO dao; 
+    private FilmDAO daof; 
     private Film selectedFilm; 
     
     public FilmCtrl() {
     }
    
     
-    public List<Film> getAllFilm() {
-        return dao.allFilm();
+    public List<Film> AllFilm() {
+        return daof.getAllFilm();
     }
     
     public void addFilm(Film u) {
-        dao.add(u);
+        daof.add(u);
     }
 
     public FilmDAO getDao() {
-        return dao;
+        return daof;
     }
 
     public void setDao(FilmDAO dao) {
-        this.dao = dao;
+        this.daof = dao;
     }
 
     public Film getFilm() {
@@ -53,11 +53,11 @@ public class FilmCtrl implements Serializable{
     
     public void deleteFilm(){
         int id = selectedFilm.getIdfilm();
-        dao.removeFilm(id);
+        daof.removeFilm(id);
     }
     
     public void modifFilm(){
-        dao.updateFilm(this.selectedFilm);
+        daof.updateFilm(this.selectedFilm);
     }
     
 }

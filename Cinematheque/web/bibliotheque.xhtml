@@ -14,7 +14,52 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <h:form>     
+        <h:form id="form">
+            <p:dataGrid var="filmo" value="#{FilmCtrl.allFilm}" columns="3" layout="grid" rows="12"  paginator="true" id="films" 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
+                
+                <f:facet name="header">
+                    Liste des films
+                </f:facet>
+                
+                <p:panel header="#{filmo.nomfilm}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+                        <!--<p:graphicImage name="{film.affichefilm}"/>-->
+                        
+                        <h:outputText value="#{filmo.datediffusion}"/>
+                        
+<!--                        <p:commandLink update=":form:filmDetail" oncomplete="PF('filmDialog').show()" title="View Detail">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="{film}" target="{film}" />
+                        </p:commandLink>-->
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataGrid>
+            
+<!--            <p:dialog header="Information sur le film" widgetVar="filmDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="filmDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="{not empty film}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <p:graphicImage name="{film.affichefilm}"/> 
+                        </f:facet>
+                        
+                        <h:outputText value="Nom du film : " />
+                        <h:outputText value="{film.nomfilm}" />
+ 
+                        <h:outputText value="Date de diffusion" />
+                        <h:outputText value="{film.datediffusion}" />
+ 
+                        <h:outputText value="Résumé : " />
+                        <h:outputText value="{film.resumefilm}"/>
+ 
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>-->
+            
+        </h:form>
+        
+<!--        <h:form>     
             <p:growl id="messages" showDetail="true" />
             
             <p:toolbar>
@@ -34,14 +79,14 @@ and open the template in the editor.
                 
                 <f:facet name="right">
                     <p:menuButton value="Options">
-                        <p:menuitem value="Save" actionListener="#{toolbarView.save}" update="messages" icon="ui-icon-disk" />
-                        <p:menuitem value="Update" actionListener="#{toolbarView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
-                        <p:menuitem value="Delete" actionListener="#{toolbarView.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:menuitem value="Save" actionListener="{toolbarView.save}" update="messages" icon="ui-icon-disk" />
+                        <p:menuitem value="Update" actionListener="{toolbarView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
+                        <p:menuitem value="Delete" actionListener="{toolbarView.delete}" ajax="false" icon="ui-icon-close" />
                         <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" />
                     </p:menuButton>
                 </f:facet>
                 
             </p:toolbar>
-        </h:form>
+        </h:form>-->
     </body>
 </html>

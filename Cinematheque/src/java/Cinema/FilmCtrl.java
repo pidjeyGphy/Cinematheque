@@ -23,7 +23,7 @@ public class FilmCtrl implements Serializable{
     
     @EJB
     private FilmDAO daof; 
-    private Film selectedFilm; 
+    private Film selectedFilm= new Film(0,"",0,"",""); 
     
     public FilmCtrl() {
     }

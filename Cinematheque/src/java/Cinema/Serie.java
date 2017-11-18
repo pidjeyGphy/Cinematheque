@@ -66,11 +66,9 @@ public class Serie implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATEDEBUT")
-    @Temporal(TemporalType.DATE)
-    private Date datedebut;
+    private int datedebut;
     @Column(name = "DATEFIN")
-    @Temporal(TemporalType.DATE)
-    private Date datefin;
+    private int datefin;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -92,7 +90,7 @@ public class Serie implements Serializable {
         this.idserie = idserie;
     }
 
-    public Serie(Integer idserie, String nomserie, int nbepisode, int nbsaison, Date datedebut, String afficheserie, String resumeserie) {
+    public Serie(Integer idserie, String nomserie, int nbepisode, int nbsaison, int datedebut, String afficheserie, String resumeserie) {
         this.idserie = idserie;
         this.nomserie = nomserie;
         this.nbepisode = nbepisode;
@@ -134,19 +132,19 @@ public class Serie implements Serializable {
         this.nbsaison = nbsaison;
     }
 
-    public Date getDatedebut() {
+    public int getDatedebut() {
         return datedebut;
     }
 
-    public void setDatedebut(Date datedebut) {
+    public void setDatedebut(int datedebut) {
         this.datedebut = datedebut;
     }
 
-    public Date getDatefin() {
+    public int getDatefin() {
         return datefin;
     }
 
-    public void setDatefin(Date datefin) {
+    public void setDatefin(int datefin) {
         this.datefin = datefin;
     }
 

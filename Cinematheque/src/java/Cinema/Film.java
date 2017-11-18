@@ -57,8 +57,7 @@ public class Film implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATEDIFFUSION")
-    @Temporal(TemporalType.DATE)
-    private Date datediffusion;
+    private int datediffusion;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -80,7 +79,7 @@ public class Film implements Serializable {
         this.idfilm = idfilm;
     }
 
-    public Film(Integer idfilm, String nomfilm, Date datediffusion, String affichefilm, String resumefilm) {
+    public Film(Integer idfilm, String nomfilm, int datediffusion, String affichefilm, String resumefilm) {
         this.idfilm = idfilm;
         this.nomfilm = nomfilm;
         this.datediffusion = datediffusion;
@@ -104,11 +103,11 @@ public class Film implements Serializable {
         this.nomfilm = nomfilm;
     }
 
-    public Date getDatediffusion() {
+    public int getDatediffusion() {
         return datediffusion;
     }
 
-    public void setDatediffusion(Date datediffusion) {
+    public void setDatediffusion(int datediffusion) {
         this.datediffusion = datediffusion;
     }
 

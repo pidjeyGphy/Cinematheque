@@ -8,6 +8,7 @@ package Cinema;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "Film")
+@ManagedBean
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Film.findAll", query = "SELECT f FROM Film f")

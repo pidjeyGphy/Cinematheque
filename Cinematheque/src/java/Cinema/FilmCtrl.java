@@ -7,6 +7,7 @@ package Cinema;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -15,6 +16,7 @@ import javax.inject.Named;
  * @author Pierre-Joseph
  */
 
+@ManagedBean
 @Named(value = "FilmCtrl")
 @ViewScoped
 public class FilmCtrl implements Serializable{

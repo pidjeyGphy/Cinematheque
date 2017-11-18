@@ -15,7 +15,7 @@ import javax.persistence.Query;
  * @author Pierre-Joseph
  */
 @Stateless
-public class SerieDAO extends Exception {
+public class SerieDAO{
 
     @PersistenceContext(unitName = "CinemathequePU")
     private EntityManager em;

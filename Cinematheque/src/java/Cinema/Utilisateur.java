@@ -5,6 +5,7 @@
  */
 package Cinema;
 
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.faces.bean.ManagedBean;
@@ -38,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Utilisateur.findByNomuser", query = "SELECT u FROM Utilisateur u WHERE u.nomuser = :nomuser")
     , @NamedQuery(name = "Utilisateur.findByPrenomuser", query = "SELECT u FROM Utilisateur u WHERE u.prenomuser = :prenomuser")
     , @NamedQuery(name = "Utilisateur.findByMdpuser", query = "SELECT u FROM Utilisateur u WHERE u.mdpuser = :mdpuser")})
-public class Utilisateur implements Serializable {
+public class Utilisateur implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -143,6 +144,8 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "Cinema.Utilisateur[ iduser=" + iduser + " ]";
     }
+    
+
    
     
 }

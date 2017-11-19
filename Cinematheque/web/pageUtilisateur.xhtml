@@ -35,7 +35,7 @@
                     <f:setPropertyActionListener value="{filmo}" target="{FilmCtrl.film}" />
                     <h:outputText value="{filmo.nomfilm}" />
                 </p:commandLink>-->
-                <h:outputText value="#{filmo.nomfilm}, #{filmo.resumefilm}" style="display:inline-block"/>
+                <h:outputText value="#{filmo.nomfilm}" style="display:inline-block"/>
             </p:dataList>
             
             <p:dialog header="Information sur ce film " widgetVar="filmDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">

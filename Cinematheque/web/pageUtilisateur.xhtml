@@ -31,10 +31,10 @@
                 <f:facet name="header">
                     Mes films !
                 </f:facet>
-                <p:commandLink update=":form:filmDetail" oncomplete="PF('filmDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
-                    <f:setPropertyActionListener value="#{filmo}" target="#{FilmCtrl.film}" />
-                    <h:outputText value="#{filmo.nomfilm}" />
-                </p:commandLink>
+<!--                <p:commandLink update=":form:filmDetail" oncomplete="PF('filmDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+                    <f:setPropertyActionListener value="{filmo}" target="{FilmCtrl.film}" />
+                    <h:outputText value="{filmo.nomfilm}" />
+                </p:commandLink>-->
                 <h:outputText value="#{filmo.nomfilm}, #{filmo.resumefilm}" style="display:inline-block"/>
             </p:dataList>
             

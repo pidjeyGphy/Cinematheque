@@ -25,6 +25,7 @@ and open the template in the editor.
                 </f:facet>
             </p:toolbar>
         </h:form>
+    
         <br/>
         <br/>
     
@@ -44,66 +45,99 @@ and open the template in the editor.
                         <img src="res/images/#{filmo.affichefilm}.jpg" style="width: 40%"/>
                         
                         <h:outputText value="#{filmo.datediffusion}"/>
-<!--                        <h:outputText value="{FilmCtrl.returnFilm(filmo.idfilm).datediffusion}"/>-->
                         
                         <p:commandLink update=":form:filmDetail" oncomplete="PF('filmDialog').show()" title="View Detail">
                             <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                            <f:setPropertyActionListener value="#{filmo}" target="#{FilmCtrl.returnFilm(filmo.idfilm)}" />
+                            <f:setPropertyActionListener value="#{filmo}" target="#{FilmCtrl.selectedFilm}" />
                         </p:commandLink>
                     </h:panelGrid>
                 </p:panel>
             </p:dataGrid>
             
-           <p:dialog header="Information sur le film" widgetVar="filmDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog id="dialogfilm" header="Information sur le film" widgetVar="filmDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="filmDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty filmo}" columnClasses="label,value"> 
-                        <!--FilmCtrl.returnFilm(filmo.idfilm)-->
+                    <p:panelGrid  columns="2" rendered="#{not empty FilmCtrl.selectedFilm}" columnClasses="label,value"> 
                         <f:facet name="header">
-                            <img src="res/images/#{FilmCtrl.returnFilm(filmo.idfilm).nomfilm}.jpg" style="width: 10%"/>
+                            <img src="res/images/#{FilmCtrl.selectedFilm.affichefilm}.jpg" style="width: 10%"/>
                         </f:facet>
-                        <h:outputText value="Nom du film : " />
-                        <h:outputText value="#{FilmCtrl.returnFilm(filmo.idfilm).nomfilm}" />
+                        <h:outputText value="Nom du film" />
+                        <h:outputText value="#{FilmCtrl.selectedFilm.nomfilm}" />
  
                         <h:outputText value="Date de diffusion" />
-                        <h:outputText value="#{FilmCtrl.returnFilm(filmo.idfilm).datediffusion}" />
+                        <h:outputText value="#{FilmCtrl.selectedFilm.datediffusion}" />
  
-                        <h:outputText value="Résumé : " />
-                        <h:outputText value="#{FilmCtrl.returnFilm(filmo.idfilm).resumefilm}"/>
+                        <h:outputText value="Résumé" />
+                        <h:outputText value="#{FilmCtrl.selectedFilm.resumefilm}"/>
  
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
             
         </h:form>
-        
-<!--        <h:form>     
-            <p:growl id="messages" showDetail="true" />
-            
-            <p:toolbar>
-                <f:facet name="left">
-                    <p:commandButton type="button" value="New" icon="ui-icon-document" />
-                    
-                    <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" />
-                    
-                    <span class="ui-separator">
-                        <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                    </span>
-                    
-                    <p:commandButton type="button" title="Save" icon="ui-icon-disk" />
-                    <p:commandButton type="button" title="Delete" icon="ui-icon-trash" />
-                    <p:commandButton type="button" title="Print" icon="ui-icon-print" />
-                </f:facet>
-                
-                <f:facet name="right">
-                    <p:menuButton value="Options">
-                        <p:menuitem value="Save" actionListener="{toolbarView.save}" update="messages" icon="ui-icon-disk" />
-                        <p:menuitem value="Update" actionListener="{toolbarView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w" />
-                        <p:menuitem value="Delete" actionListener="{toolbarView.delete}" ajax="false" icon="ui-icon-close" />
-                        <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" />
-                    </p:menuButton>
-                </f:facet>
-                
-            </p:toolbar>
-        </h:form>-->
     </h:body>
+    
+        <br/>
+        <br/>
+        
+    <h:body>
+        <h:form id="formserie">
+            <p:dataGrid var="serio" value="#{SerieCtrl.allSerie}" columns="4" layout="grid" rows="12"  paginator="true" id="series" 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="8,12,16">
+                
+                <f:facet name="header">
+                    Liste des séries
+                </f:facet>
+                
+                <p:panel header="#{serio.nomserie}" style="text-align:center;width:95%;height: 95%;">
+                    <h:panelGrid columns="1" style="width:100%">
+                        
+                        <img src="res/images/#{serio.afficheserie}.jpg" style="width: 40%"/>
+                        
+                        <h:outputText value="#{serio.datedebut}"/>
+                        
+                        <p:commandLink update=":formserie:serieDetail" oncomplete="PF('serieDialog').show()" title="View Detail Serie">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="#{serio}" target="#{SerieCtrl.selectedSerie}" />
+                        </p:commandLink>
+                    </h:panelGrid>
+                </p:panel>
+            </p:dataGrid>
+            
+            <p:dialog id="dialogserie" header="Information sur la Série" widgetVar="serieDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="serieDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty SerieCtrl.selectedSerie}" columnClasses="label,value"> 
+                        <f:facet name="header">
+                            <img src="res/images/#{SerieCtrl.selectedSerie.afficheserie}.jpg" style="width: 10%"/>
+                        </f:facet>
+ 
+                        <h:outputText value="Nom de la série" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.nomserie}" />
+ 
+                        <h:outputText value="Début diffusion" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.datedebut}" />
+                        
+                        <h:outputText value="Nbr de saisons" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.nbsaison}" />
+                        
+                        <h:outputText value="Nbr d'épisodes" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.nbepisode}" />
+                        
+                        <h:outputText value="Résumé" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.resumeserie}"/>
+ 
+                    </p:panelGrid>
+                    <h:commandButton value="Ajouter à ma bibliothèque" action="pageUtilisateur"/> 
+                </p:outputPanel>
+            </p:dialog>
+            
+        </h:form>
+    </h:body>        
+
+
+<!--                        <f:facet name="outputText" rendered="{not empty SerieCtrl.selectedSerie.datefin}">
+                            <h:outputText value="Fin diffusion" />
+                            <h:outputText value="{SerieCtrl.selectedSerie.datefin}"/>
+                        </f:facet>-->        
+        
 </html>

@@ -21,7 +21,7 @@ public class FilmCtrl implements Serializable{
     
     @EJB
     private FilmDAO daof; 
-    private Film selectedFilm= new Film(0,"",0,"","");
+    private Film selectedFilm;
     
     public FilmCtrl() {
     }
@@ -43,7 +43,7 @@ public class FilmCtrl implements Serializable{
         this.daof = dao;
     }
 
-    public Film getFilm() {
+    public Film getSelectedFilm() {
         return selectedFilm;
     }
     
@@ -51,7 +51,7 @@ public class FilmCtrl implements Serializable{
         return daof.findFilm(id);
     }
 
-    public void setFilm(Film selecteFilm) {
+    public void setSelectedFilm(Film selecteFilm) {
         this.selectedFilm = selecteFilm;
     }
     

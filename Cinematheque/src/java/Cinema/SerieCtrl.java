@@ -28,11 +28,11 @@ public class SerieCtrl implements Serializable{
     }
    
     
-    public List<Serie> getSer() {
+    public List<Serie> getAllSerie() {
         return dao.allSer();
     }
     
-    public void addSer(Serie s) {
+    public void addSerie(Serie s) {
         dao.add(s);
     }
 
@@ -44,11 +44,11 @@ public class SerieCtrl implements Serializable{
         this.dao = dao;
     }
 
-    public Serie getSerie() {
+    public Serie getSelectedSerie() {
         return selectedSer;
     }
 
-    public void setSer(Serie selectedSer) {
+    public void setSelectedSerie(Serie selectedSer) {
         this.selectedSer = selectedSer;
     }
     

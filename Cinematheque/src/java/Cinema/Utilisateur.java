@@ -9,6 +9,7 @@ package Cinema;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Utilisateur.findByIduser", query = "SELECT u FROM Utilisateur u WHERE u.iduser = :iduser")
     , @NamedQuery(name = "Utilisateur.findByNomuser", query = "SELECT u FROM Utilisateur u WHERE u.nomuser = :nomuser")
     , @NamedQuery(name = "Utilisateur.findByPrenomuser", query = "SELECT u FROM Utilisateur u WHERE u.prenomuser = :prenomuser")
-    , @NamedQuery(name = "Utilisateur.findByMdpuser", query = "SELECT u FROM Utilisateur u WHERE u.mdpuser = :mdpuser")})
+    , @NamedQuery(name = "Utilisateur.findByMdpuser", query = "SELECT u FROM Utilisateur u WHERE u.mdpuser = :mdpuser")
+    , @NamedQuery(name = "Utilisateur.connexion", query = "SELECT u FROM Utilisateur u WHERE u.nomuser= :nomuser AND u.mdpuser = :mdpuser")})
 public class Utilisateur implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -110,6 +112,7 @@ public class Utilisateur implements Serializable{
     public void setMdpuser(String mdpuser) {
         this.mdpuser = mdpuser;
     }
+    
 
     @XmlTransient
     public Collection<Bibliotheque> getBibliothequeCollection() {

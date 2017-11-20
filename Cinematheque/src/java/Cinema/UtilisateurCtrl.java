@@ -10,11 +10,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
@@ -22,17 +18,17 @@ import java.io.IOException;
  */
 @Named(value = "UtilisateurCtrl")
 @ViewScoped
-public class UtilisateurCtrl extends HttpServlet implements Serializable {
+public class UtilisateurCtrl implements Serializable {
 
     @EJB
-    private static final long serialVersionUID=1L;
     private UtilisateurDAO dao;
     private Utilisateur selectedUser;
+    
 
     public UtilisateurCtrl() {
     }
 
-    public List<Utilisateur> getUser() {
+    public List<Utilisateur> getAllUser() {
         return dao.allUser();
     }
 
@@ -48,11 +44,11 @@ public class UtilisateurCtrl extends HttpServlet implements Serializable {
         this.dao = dao;
     }
 
-    public Utilisateur getUtilisateur() {
+    public Utilisateur getSelectedUser() {
         return selectedUser;
     }
 
-    public void setUser(Utilisateur selectedUser) {
+    public void setSelectedUser(Utilisateur selectedUser) {
         this.selectedUser = selectedUser;
     }
 
@@ -65,33 +61,15 @@ public class UtilisateurCtrl extends HttpServlet implements Serializable {
         dao.updateUtilisateur(this.selectedUser);
     }
 
-//    public void chercheUtilisateur(String nomu, String mdp){
-//        try 
-//        {
-//            Utilisateur u = dao.findUtilisateurByNom(nomu);
-//            try{
-//                u.getMdpuser() = mdp;
-//            } 
-//            catch(ClassCastException e){
-//                System.out.println("Ce mot de passe n'est pas connu de la base de données");
-//            }
-//                
-//        }
-//        catch(ClassCastException e)
-//        {
-//          System.out.println("Ce nom n'est pas connu de la base de données");
-//        }
-    // Catch sur l'utilisateur pour savoir si l'utilisateur existe
-    // Vérification de la cohérence du mot de passe
-    protected void doGet(HttpServletRequest requete, HttpServletResponse reponse) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.xhtml").forward(requete, reponse);
-    }
+    public Utilisateur connexion() throws ConnexionExecption {
+        selectedUser = dao.connexionDao(selectedUser.getNomuser(),selectedUser.getMdpuser());
+        if (selectedUser == null){
+        throw new ConnexionExecption();
+        }
+        else {
+                return (selectedUser);
+                }
 
-    protected void doPost(HttpServletRequest requete, HttpServletResponse reponse) throws ServletException, IOException {
-        ConnectionForm form = new ConnectionForm();
-        form.verifierIdentifiant(requete);
-        requete.setAttribute("form", form);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.xhtml").forward(requete, reponse);
     }
 
 }

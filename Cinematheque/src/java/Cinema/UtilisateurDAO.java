@@ -35,6 +35,14 @@ public class UtilisateurDAO {
         query.setParameter("nomuser", nom);
         return (Utilisateur) query.getSingleResult();
     }
+    
+            
+    public Utilisateur connexionDao (String nom, String mdp){
+        Query query = em.createNamedQuery("Utilisateur.connexion")
+                .setParameter("nomuser", nom).setParameter("mdpuser", mdp);
+        
+        return(Utilisateur) query.getSingleResult();
+    }
    
     
     public void add(Utilisateur u) {
@@ -52,4 +60,7 @@ public class UtilisateurDAO {
         em.merge(u);
         em.flush();
     }
+    
+
+ 
 }

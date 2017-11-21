@@ -11,7 +11,7 @@
         </title>
     </h:head>
       
-    <h:body>
+    <h:body style="background-color: #B2DFDB">
         <h:form>   
             <p:toolbar>
                 <f:facet name="right">
@@ -21,15 +21,16 @@
         </h:form>
             
         <h:form>
-                    <p:panel header="Je m'inscris">
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Nom :  *" />
+                    <p:panel header="Je m'inscris" style="background-color:#B2DFDB">
+                        <h:panelGrid columns="6" columnClasses="label, value">
+                   
+                                <h:outputText value="Nom :  *" style="color: white"/>
                                 <p:inputText value="#{utilisateur.nomuser}" required="true" label="Nom : "/>
  
-                                <h:outputText value="Prénom :  *" />
+                                <h:outputText value="Prénom :  *" style="color: white"/>
                                 <p:inputText value="#{utilisateur.prenomuser}" required="true" label="Prénom : "/>
  
-                                <h:outputText value="Mot de passe :  *" />
+                                <h:outputText value="Mot de passe :  *" style="color: white"/>
                                 <p:password value="#{utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
                             </h:panelGrid>
                         

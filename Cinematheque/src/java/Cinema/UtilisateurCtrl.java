@@ -27,6 +27,9 @@ public class UtilisateurCtrl implements Serializable {
     @EJB
     private StockageDAO stdao;
     
+    @EJB
+    private BibliothequeDAO daobiblio;
+    
     private Utilisateur selectedUser;
     private String selectedNom;
     private String selectedMdp;
@@ -77,6 +80,7 @@ public class UtilisateurCtrl implements Serializable {
 
     public void deleteUtilisateur() {
         int id = selectedUser.getIduser();
+        daobiblio.removeBibliotheque(id);
         dao.removeUtilisateur(id);
     }
 

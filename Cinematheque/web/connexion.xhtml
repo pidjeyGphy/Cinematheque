@@ -11,15 +11,15 @@
         </title>
     </h:head>
       
-    <h:body>
+    <h:body style="background-color: #B2DFDB">
             
         <h:form>
-                    <p:panel header="Je me connecte">
+                    <p:panel header="Je me connecte" style="background-color:#B2DFDB">
                             <h:panelGrid columns="2" columnClasses="label, value">
-                                <h:outputText value="Nom :  *" />
+                                <h:outputText value="Nom :  *" style="color: white"/>
                                 <p:inputText value="#{UtilisateurCtrl.selectedNom}" required="true" label="Nom : "/>
  
-                                <h:outputText value="Mot de passe :  *" />
+                                <h:outputText value="Mot de passe :  *" style="color: white"/>
                                 <p:password value="#{UtilisateurCtrl.selectedMdp}" required="true" label="Mot de passe : " />
                             </h:panelGrid>
                         

@@ -29,7 +29,7 @@ and open the template in the editor.
         <br/>
         <br/>
     
-    <h:body>
+    <h:body style="background-color: lightgray">
         <h:form id="form">
             <p:dataGrid var="filmo" value="#{FilmCtrl.allFilm}" columns="4" layout="grid" rows="12"  paginator="true" id="films" 
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -39,7 +39,7 @@ and open the template in the editor.
                     Liste des films
                 </f:facet>
                 
-                <p:panel header="#{filmo.nomfilm}" style="text-align:center;width:95%;height: 95%;">
+                <p:panel header="#{filmo.nomfilm}" style="text-align:center;width:95%;height: 95%; background-color: #B2DFDB">
                     <h:panelGrid columns="1" style="width:100%">
                         
                         <img src="res/images/#{filmo.affichefilm}.jpg" style="width: 40%"/>
@@ -54,11 +54,11 @@ and open the template in the editor.
                 </p:panel>
             </p:dataGrid>
             
-            <p:dialog id="dialogfilm" header="Information sur le film" widgetVar="filmDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog id="dialogfilm" header="Information sur le film" widgetVar="filmDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="background-color: lightgray">
                 <p:outputPanel id="filmDetail" style="text-align:center;">
                     <p:panelGrid  columns="2" rendered="#{not empty FilmCtrl.selectedFilm}" columnClasses="label,value"> 
                         <f:facet name="header">
-                            <img src="res/images/#{FilmCtrl.selectedFilm.affichefilm}.jpg" style="width: 10%"/>
+                            <img src="res/images/#{FilmCtrl.selectedFilm.affichefilm}.jpg" style="width: 10%; background-color: #B2DFDB"/>
                         </f:facet>
                         <h:outputText value="Nom du film" />
                         <h:outputText value="#{FilmCtrl.selectedFilm.nomfilm}" />
@@ -81,19 +81,19 @@ and open the template in the editor.
         <br/>
         
     <h:body>
-        <h:form id="formserie">
+        <h:form id="formserie" style="background-color: #B2DFDB">
             <p:dataGrid var="serio" value="#{SerieCtrl.allSerie}" columns="4" layout="grid" rows="12"  paginator="true" id="series" 
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        rowsPerPageTemplate="8,12,16">
+                        rowsPerPageTemplate="8,12,16" style="background-color: #B2DFDB">
                 
                 <f:facet name="header">
                     Liste des séries
                 </f:facet>
                 
-                <p:panel header="#{serio.nomserie}" style="text-align:center;width:95%;height: 95%;">
+                <p:panel header="#{serio.nomserie}" style="text-align:center;width:95%;height: 95%; background-color: #B2DFDB">
                     <h:panelGrid columns="1" style="width:100%">
                         
-                        <img src="res/images/#{serio.afficheserie}.jpg" style="width: 40%"/>
+                        <img src="res/images/#{serio.afficheserie}.jpg" style="width: 40%; background-color: #B2DFDB"/>
                         
                         <h:outputText value="#{serio.datedebut}"/>
                         

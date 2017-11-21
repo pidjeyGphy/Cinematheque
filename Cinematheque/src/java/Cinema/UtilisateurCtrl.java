@@ -30,6 +30,9 @@ public class UtilisateurCtrl implements Serializable {
     @EJB
     private BibliothequeDAO daobiblio;
     
+    @EJB
+    private StockageDAO daoStock; 
+    
     private Utilisateur selectedUser;
     private String selectedNom;
     private String selectedMdp;
@@ -79,9 +82,10 @@ public class UtilisateurCtrl implements Serializable {
     }
 
     public void deleteUtilisateur() {
-        int id = selectedUser.getIduser();
-        daobiblio.removeBibliotheque(id);
-        dao.removeUtilisateur(id);
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        daobiblio.removeBibliothequeUser(into);
+        dao.removeUtilisateur(into);
     }
 
     public void modifUtilisateur() {

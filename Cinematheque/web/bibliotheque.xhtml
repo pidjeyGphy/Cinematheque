@@ -16,7 +16,7 @@ and open the template in the editor.
     <h:form>   
             <p:toolbar>
                 <f:facet name="right">
-                    <h:commandButton value="Supprimer mon compte" action="index"/> 
+                    <h:commandButton value="Supprimer mon compte" action="index" actionListener="#{UtilisateurCtrl.deleteUtilisateur()}"/> 
                     <h:commandButton  value="Deconnexion" action='index'/>
                 </f:facet>
 

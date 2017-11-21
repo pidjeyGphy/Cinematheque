@@ -24,9 +24,9 @@ public class FilmDAO {
         return query.getResultList();
     }
     
-    public Film findFilm(int id){
+    public Film findFilm(Film film){
         Query query = em.createNamedQuery("Film.findByIdfilm");
-        query.setParameter("idfilm", id);
+        query.setParameter("idfilm", film);
         return (Film) query.getSingleResult();
     }
     
@@ -34,12 +34,7 @@ public class FilmDAO {
         em.persist(f);
         em.flush();
     }
-    
-    public void removeFilm(int id){
-        Film f = findFilm(id);
-        em.remove(f);
-        em.flush();
-    }
+   
     
     public void updateFilm(Film f){
         em.merge(f);

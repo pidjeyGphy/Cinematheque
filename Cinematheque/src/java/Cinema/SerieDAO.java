@@ -25,9 +25,9 @@ public class SerieDAO{
         return query.getResultList();
     }
     
-    public Serie findSerie(int id){
+    public Serie findSerie(Serie serie){
         Query query = em.createNamedQuery("Serie.findByIdserie");
-        query.setParameter("idserie", id);
+        query.setParameter("idserie", serie);
         return (Serie) query.getSingleResult();
     }
     
@@ -36,11 +36,11 @@ public class SerieDAO{
         em.flush();
     }
     
-    public void removeSerie(int id){
-        Serie s = findSerie(id);
-        em.remove(s);
-        em.flush();
-    }
+//  public void removeSerie(int id){
+//        Serie s = findSerie(id);
+//        em.remove(s);
+//        em.flush();
+//    }
     
     public void updateSerie(Serie s){
         em.merge(s);

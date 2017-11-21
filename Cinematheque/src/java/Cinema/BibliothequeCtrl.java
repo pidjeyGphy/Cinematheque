@@ -21,7 +21,11 @@ import javax.inject.Named;
 public class BibliothequeCtrl implements Serializable{
     
     @EJB
-    private BibliothequeDAO dao; 
+    private BibliothequeDAO daoBiblio;
+    @EJB
+    private FilmDAO daoFilm;
+    @EJB
+    private SerieDAO daoSerie;
     private Bibliotheque selectedBiblio;
     
     public BibliothequeCtrl() {
@@ -29,19 +33,19 @@ public class BibliothequeCtrl implements Serializable{
    
     
     public List<Bibliotheque> getAllBibliotheque() {
-        return dao.allBiblio();
+        return daoBiblio.allBiblio();
     }
     
     public void addBibliotheque(Bibliotheque b) {
-        dao.add(b);
+        daoBiblio.add(b);
     }
 
     public BibliothequeDAO getDao() {
-        return dao;
+        return daoBiblio;
     }
 
     public void setDao(BibliothequeDAO dao) {
-        this.dao = dao;
+        this.daoBiblio = dao;
     }
 
     public Bibliotheque getSelectedBiblio() {
@@ -54,11 +58,23 @@ public class BibliothequeCtrl implements Serializable{
     
     public void deleteBibliotheque(){
         int id = selectedBiblio.getIdbiblio();
-        dao.removeBibliotheque(id);
+        daoBiblio.removeBibliotheque(id);
     }
     
     public void modifBibliotheque(){
-        dao.updateBibliotheque(this.selectedBiblio);
+        daoBiblio.updateBibliotheque(this.selectedBiblio);
+    }
+    
+    public void addFilmBibliotheque(Film film){
+        Film idFilm = daoFilm.findFilm(film);
+        Bibliotheque selectBiblio = new Bibliotheque(Integer.MIN_VALUE, false);
+        selectBiblio.setIdfilm(idFilm);        
+    }
+    
+    public void addSerieBibliotheque(Serie serie){
+        Serie idSerie = daoSerie.findSerie(serie);
+        Bibliotheque selectBiblio = new Bibliotheque(Integer.MIN_VALUE, false);
+        selectBiblio.setIdserie(idSerie);    
     }
     
 }

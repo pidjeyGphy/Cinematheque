@@ -21,7 +21,7 @@ import javax.inject.Named;
 public class SerieCtrl implements Serializable{
     
     @EJB
-    private SerieDAO dao; 
+    private SerieDAO daoSerie; 
     private Serie selectedSer; 
     
     public SerieCtrl() {
@@ -29,19 +29,19 @@ public class SerieCtrl implements Serializable{
    
     
     public List<Serie> getAllSerie() {
-        return dao.allSer();
+        return daoSerie.allSer();
     }
     
     public void addSerie(Serie s) {
-        dao.add(s);
+        daoSerie.add(s);
     }
 
     public SerieDAO getDao() {
-        return dao;
+        return daoSerie;
     }
 
     public void setDao(SerieDAO dao) {
-        this.dao = dao;
+        this.daoSerie = dao;
     }
 
     public Serie getSelectedSerie() {
@@ -52,13 +52,13 @@ public class SerieCtrl implements Serializable{
         this.selectedSer = selectedSer;
     }
     
-    public void deleteSerie(){
-        int id = selectedSer.getIdserie();
-        dao.removeSerie(id);
-    }
+//    public void deleteSerie(){
+//        int id = selectedSer.getIdserie();
+//        daoSerie.removeSerie(id);
+//    }
     
     public void modifSerie(){
-        dao.updateSerie(this.selectedSer);
+        daoSerie.updateSerie(this.selectedSer);
     }
     
 }

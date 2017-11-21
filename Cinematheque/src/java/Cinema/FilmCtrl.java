@@ -47,17 +47,8 @@ public class FilmCtrl implements Serializable{
         return selectedFilm;
     }
     
-    public Film returnFilm(int id){
-        return daof.findFilm(id);
-    }
-
     public void setSelectedFilm(Film selecteFilm) {
         this.selectedFilm = selecteFilm;
-    }
-    
-    public void deleteFilm(){
-        int id = selectedFilm.getIdfilm();
-        daof.removeFilm(id);
     }
     
     public void modifFilm(){

@@ -23,6 +23,8 @@ public class UtilisateurCtrl implements Serializable {
     @EJB
     private UtilisateurDAO dao;
     private Utilisateur selectedUser;
+    private String selectedNom;
+    private String selectedMdp;
     
 
     public UtilisateurCtrl() {
@@ -48,6 +50,22 @@ public class UtilisateurCtrl implements Serializable {
         return selectedUser;
     }
 
+    public String getSelectedNom() {
+        return selectedNom;
+    }
+
+    public String getSelectedMdp() {
+        return selectedMdp;
+    }
+
+    public void setSelectedNom(String selectedNom) {
+        this.selectedNom = selectedNom;
+    }
+
+    public void setSelectedMdp(String selectedMdp) {
+        this.selectedMdp = selectedMdp;
+    }
+    
     public void setSelectedUser(Utilisateur selectedUser) {
         this.selectedUser = selectedUser;
     }
@@ -62,7 +80,7 @@ public class UtilisateurCtrl implements Serializable {
     }
 
     public Utilisateur connexion() throws ConnexionExecption {
-        selectedUser = dao.connexionDao(selectedUser.getNomuser(),selectedUser.getMdpuser());
+        selectedUser = dao.connexionDao(selectedNom,selectedMdp);
         if (selectedUser == null){
         throw new ConnexionExecption();
         }

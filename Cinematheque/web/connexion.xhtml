@@ -17,10 +17,10 @@
                     <p:panel header="Je me connecte">
                             <h:panelGrid columns="2" columnClasses="label, value">
                                 <h:outputText value="Nom :  *" />
-                                <p:inputText value="#{utilisateur.nomuser}" required="true" label="Nom : "/>
+                                <p:inputText value="#{UtilisateurCtrl.selectedNom}" required="true" label="Nom : "/>
  
                                 <h:outputText value="Mot de passe :  *" />
-                                <p:password value="#{utilisateur.mdpuser}" required="true" label="Mot de passe : " />
+                                <p:password value="#{UtilisateurCtrl.selectedMdp}" required="true" label="Mot de passe : " />
                             </h:panelGrid>
                         
                         <h:commandButton value="Je me connecte ! " action='#{UtilisateurCtrl.connexion()}'/>

@@ -41,11 +41,17 @@ public class BibliothequeCtrl implements Serializable{
     }
     
     public List<Film> getFilmBibliotheque() {
-        return daoBiblio.filmBiblio();
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur util=daouser.findUtilisateur(into);
+        return daoBiblio.filmBiblio(util);
     }
     
     public List<Serie> getSerieBibliotheque() {
-        return daoBiblio.serieBiblio();
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur util=daouser.findUtilisateur(into);
+        return daoBiblio.serieBiblio(util);
     }
     
     public void addBibliotheque(Bibliotheque b) {

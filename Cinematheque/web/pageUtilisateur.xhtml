@@ -24,16 +24,48 @@
             </p:toolbar>
         </h:form>
         
+        <h:form id="filmform">
+            <p:dataList value="#{BibliothequeCtrl.filmBibliotheque}" var="serio" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+                <f:facet name="header">
+                    Mes séries !
+                </f:facet>
+                <p:commandLink update=":filmDetailo" oncomplete="PF('filmDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+                    <f:setPropertyActionListener value="#{filmo}" target="#{FilmCtrl.selectedFilm}" />
+                    <h:outputText value="#{filmo.nomfilm}, #{filmo.datediffusion}" />
+                </p:commandLink>
+                <h:outputText value="#{filmo.nomfilm}, #{filmo.datediffusion}" style="display:inline-block"/>
+            </p:dataList>
+        </h:form>
+        
+        <p:dialog id="dialogfilm" header="Information sur la Série" widgetVar="filmDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+                <p:outputPanel id="filmDetailo" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty FilmCtrl.selectedFilm}" columnClasses="label,value"> 
+                        <f:facet name="header">
+                            <img src="res/images/#{FilmCtrl.selectedFilm.affichefilm}.jpg" style="width: 10%"/>
+                        </f:facet>
+                        <h:outputText value="Nom du film" />
+                        <h:outputText value="#{FilmCtrl.selectedFilm.nomfilm}" />
+ 
+                        <h:outputText value="Date de diffusion" />
+                        <h:outputText value="#{FilmCtrl.selectedFilm.datediffusion}" />
+ 
+                        <h:outputText value="Résumé" />
+                        <h:outputText value="#{FilmCtrl.selectedFilm.resumefilm}"/>
+ 
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
 
         <br/>
         <br/>
-        <h:form id="serieForm">
+        
+        <h:form id="serieform">
             <p:dataList value="#{BibliothequeCtrl.serieBibliotheque}" var="serio" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
                 <f:facet name="header">
                     Mes séries !
                 </f:facet>
-                <p:commandLink update=":serieForm:serieDetail" oncomplete="PF('serieDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
-                    <f:setPropertyActionListener value="#{serio}" target="#{BibliothequeCtrl.selectedBiblio}" />
+                <p:commandLink update=":serieDetailo" oncomplete="PF('serieDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+                    <f:setPropertyActionListener value="#{serio}" target="#{SerieCtrl.selectedSerie}" />
                     <h:outputText value="#{serio.nomserie}, #{serio.datedebut}" />
                 </p:commandLink>
                 <h:outputText value="#{serio.nomserie}, #{serio.datedebut}" style="display:inline-block"/>
@@ -41,26 +73,26 @@
         </h:form>
         
         <p:dialog id="dialogserie" header="Information sur la Série" widgetVar="serieDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
-                <p:outputPanel id="serieDetail" style="text-align:center;">
-                    <p:panelGrid  columns="2" rendered="#{not empty BibliothequeCtrl.selectedBiblio}" columnClasses="label,value"> 
+                <p:outputPanel id="serieDetailo" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty SerieCtrl.selectedSerie}" columnClasses="label,value"> 
                         <f:facet name="header">
-                            <img src="res/images/#{BibliothequeCtrl.selectedBiblio.afficheserie}.jpg" style="width: 10%"/>
+                            <img src="res/images/#{SerieCtrl.selectedSerie.afficheserie}.jpg" style="width: 10%"/>
                         </f:facet>
  
                         <h:outputText value="Nom de la série" />
-                        <h:outputText value="#{BibliothequeCtrl.selectedBiblio.nomserie}" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.nomserie}" />
  
                         <h:outputText value="Début diffusion" />
-                        <h:outputText value="#{BibliothequeCtrl.selectedBiblio.datedebut}" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.datedebut}" />
                         
                         <h:outputText value="Nbr de saisons" />
-                        <h:outputText value="#{BibliothequeCtrl.selectedBiblio.nbsaison}" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.nbsaison}" />
                         
                         <h:outputText value="Nbr d'épisodes" />
-                        <h:outputText value="#{BibliothequeCtrl.selectedBiblio.nbepisode}" />
+                        <h:outputText value="#{SerieCtrl.selectedSerie.nbepisode}" />
                         
                         <h:outputText value="Résumé" />
-                        <h:outputText value="#{BibliothequeCtrl.selectedBiblio.resumeserie}"/>
+                        <h:outputText value="#{SerieCtrl.selectedSerie.resumeserie}"/>
  
                     </p:panelGrid>
                 </p:outputPanel>
@@ -69,7 +101,7 @@
         <br/>
         <br/>
 
-<!--        <h:form>
+        <h:form>
             <p:progressBar value="50" labelTemplate="{value}%" displayOnly="true"/>
         </h:form>
 
@@ -97,7 +129,7 @@
                 PF('pbClient').setValue(0);
                 PF('startButton1').enable();
             }
-        </script>-->
+        </script>
 
     </h:body>
 </html>

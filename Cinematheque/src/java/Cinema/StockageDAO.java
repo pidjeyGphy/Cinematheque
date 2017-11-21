@@ -25,6 +25,13 @@ public class StockageDAO {
         return query.getResultList();
     }
     
+    
+    public Stockage oneStock() {
+        Query query = em.createNamedQuery("Stockage.findAll");
+        return (Stockage) query.getSingleResult();
+    }
+    
+    
     public Stockage findStockage(int id){
         Query query = em.createNamedQuery("Stockage.findByIdstock");
         query.setParameter("idstock", id);

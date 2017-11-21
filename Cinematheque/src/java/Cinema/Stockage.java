@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Stockage.findAll", query = "SELECT s FROM Stockage s")
+//    , @NamedQuery(name = "Stockage.findOne", query = "SELECT s.idstock FROM Stockage s LIMIT 1")
     , @NamedQuery(name = "Stockage.findByIdstock", query = "SELECT s FROM Stockage s WHERE s.idstock = :idstock")})
 public class Stockage implements Serializable {
 

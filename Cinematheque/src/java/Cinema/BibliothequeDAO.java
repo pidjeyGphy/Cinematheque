@@ -24,6 +24,17 @@ public class BibliothequeDAO {
         return query.getResultList();
     }
     
+    public List<Film> filmBiblio() {
+        Query query = em.createNamedQuery("Bibliotheque.findFilm");
+        return query.getResultList();
+    }
+    
+    public List<Serie> serieBiblio(Utilisateur uti) {
+        Query query = em.createNamedQuery("Bibliotheque.findSerie");
+        query.setParameter("IDUSER",uti);
+        return query.getResultList();
+    }
+    
     public Bibliotheque findBibliotheque(int id){
         Query query = em.createNamedQuery("Bibliotheque.findByIduser");
         query.setParameter("idBiblio", id);

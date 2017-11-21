@@ -26,6 +26,10 @@ public class BibliothequeCtrl implements Serializable{
     private FilmDAO daoFilm;
     @EJB
     private SerieDAO daoSerie;
+    @EJB
+    private UtilisateurDAO daouser;
+    @EJB
+    private StockageDAO daoStock;
     private Bibliotheque selectedBiblio;
     
     public BibliothequeCtrl() {
@@ -34,6 +38,14 @@ public class BibliothequeCtrl implements Serializable{
     
     public List<Bibliotheque> getAllBibliotheque() {
         return daoBiblio.allBiblio();
+    }
+    
+    public List<Film> getFilmBibliotheque() {
+        return daoBiblio.filmBiblio();
+    }
+    
+    public List<Serie> getSerieBibliotheque() {
+        return daoBiblio.serieBiblio();
     }
     
     public void addBibliotheque(Bibliotheque b) {
@@ -66,15 +78,21 @@ public class BibliothequeCtrl implements Serializable{
     }
     
     public void addFilmBibliotheque(Film film){
-        Film idFilm = daoFilm.findFilm(film);
         Bibliotheque selectBiblio = new Bibliotheque(Integer.MIN_VALUE, false);
-        selectBiblio.setIdfilm(idFilm);        
+        selectBiblio.setIdfilm(film);
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        selectBiblio.setIduser(daouser.findUtilisateur(into));
+        daoBiblio.add(selectBiblio);        
     }
     
     public void addSerieBibliotheque(Serie serie){
-        Serie idSerie = daoSerie.findSerie(serie);
         Bibliotheque selectBiblio = new Bibliotheque(Integer.MIN_VALUE, false);
-        selectBiblio.setIdserie(idSerie);    
+        selectBiblio.setIdserie(serie);
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        selectBiblio.setIduser(daouser.findUtilisateur(into));
+        daoBiblio.add(selectBiblio);
     }
     
 }

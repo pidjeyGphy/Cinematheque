@@ -23,6 +23,10 @@ public class UtilisateurCtrl implements Serializable {
 
     @EJB
     private UtilisateurDAO dao;
+    
+    @EJB
+    private StockageDAO stdao;
+    
     private Utilisateur selectedUser;
     private String selectedNom;
     private String selectedMdp;
@@ -82,6 +86,8 @@ public class UtilisateurCtrl implements Serializable {
 
     public Utilisateur connexion() throws ConnexionExecption {
         selectedUser = dao.connexionDao(selectedNom,selectedMdp);
+        Stockage st = new Stockage(selectedUser.getIduser());
+        stdao.addStockage(st);
         if (selectedUser == null){
         throw new ConnexionExecption();
         }

@@ -70,7 +70,7 @@ and open the template in the editor.
                         <h:outputText value="#{FilmCtrl.selectedFilm.resumefilm}"/>
  
                     </p:panelGrid>
-                    <h:commandButton value="Ajouter à ma bibliothèque" action="pageUtilisateur" actionListener="#{BibliothequeCtrl.addFilmBibliotheque(film)}"/> 
+                    <h:commandButton value="Ajouter à ma bibliothèque" action="pageUtilisateur" actionListener="#{BibliothequeCtrl.addFilmBibliotheque(FilmCtrl.selectedFilm)}"/> 
                 </p:outputPanel>
             </p:dialog>
             
@@ -128,7 +128,7 @@ and open the template in the editor.
                         <h:outputText value="#{SerieCtrl.selectedSerie.resumeserie}"/>
  
                     </p:panelGrid>
-                    <h:commandButton value="Ajouter à ma bibliothèque" action="pageUtilisateur" actionListener="#{BibliothequeCtrl.addSerieBibliotheque(serie)}"/> 
+                    <h:commandButton value="Ajouter à ma bibliothèque" action="pageUtilisateur" actionListener="#{BibliothequeCtrl.addSerieBibliotheque(SerieCtrl.selectedSerie)}"/> 
                 </p:outputPanel>
             </p:dialog>
             

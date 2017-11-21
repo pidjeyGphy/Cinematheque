@@ -53,6 +53,13 @@ public class BibliothequeDAO {
         em.flush();
     }
     
+    public void removeBibliothequeUser(int iduser){
+        Query query = em.createNamedQuery("Bibliotheque.delete");
+        query.setParameter("iduser", iduser);
+        query.executeUpdate(); // Retourne un integer
+        
+    }
+    
     public void updateBibliotheque(Bibliotheque b){
         em.merge(b);
         em.flush();

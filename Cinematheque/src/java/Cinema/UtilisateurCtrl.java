@@ -17,8 +17,8 @@ import javax.faces.bean.SessionScoped;
  * @author Jennifer
  */
 @Named(value = "UtilisateurCtrl")
-//@ViewScoped
-@SessionScoped
+@ViewScoped
+//@SessionScoped
 public class UtilisateurCtrl implements Serializable {
 
     @EJB

@@ -27,7 +27,7 @@
         <br/>
 
         <h:form>
-            <p:dataList var="filmo" value="#{FilmCtrl.allFilm}"  type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+            <p:dataList var="mesFilms" value="#{FilmCtrl.allFilm}"  type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
                 <f:facet name="header">
                     Mes films !
                 </f:facet>
@@ -35,7 +35,7 @@
                     <f:setPropertyActionListener value="{filmo}" target="{FilmCtrl.film}" />
                     <h:outputText value="{filmo.nomfilm}" />
                 </p:commandLink>-->
-                <h:outputText value="#{filmo.nomfilm}" style="display:inline-block"/>
+                <h:outputText value="#{mesFilms.nomfilm}" style="display:inline-block"/>
             </p:dataList>
             
             <p:dialog header="Information sur ce film " widgetVar="filmDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">

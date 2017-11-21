@@ -33,7 +33,7 @@
                                 <p:password value="#{utilisateur.mdpuser}" required="true" label="Mot de passe : "/>
                             </h:panelGrid>
                         
-                        <h:commandButton value="C'est partie pour la folle aventure" action='#{UtilisateurCtrl.addUser(utilisateur)}'/>
+                        <h:commandButton value="C'est partie pour la folle aventure" action='pageUtilisateur' actionListener='#{UtilisateurCtrl.addUser(utilisateur)}'/>
                     </p:panel>
         </h:form>
         

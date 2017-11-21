@@ -23,7 +23,7 @@
                                 <p:password value="#{UtilisateurCtrl.selectedMdp}" required="true" label="Mot de passe : " />
                             </h:panelGrid>
                         
-                        <h:commandButton value="Je me connecte ! " action='#{UtilisateurCtrl.connexion()}'/>
+                        <h:commandButton value="Je me connecte ! " action="pageUtilisateur" actionListener="#{UtilisateurCtrl.connexion()}"/>
                     </p:panel>
         </h:form>
         

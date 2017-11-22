@@ -8,6 +8,8 @@ package Cinema;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -100,5 +102,5 @@ public class BibliothequeCtrl implements Serializable{
         selectBiblio.setIduser(daouser.findUtilisateur(into));
         daoBiblio.add(selectBiblio);
     }
-    
+  
 }

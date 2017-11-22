@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Bibliotheque.findByVu", query = "SELECT b FROM Bibliotheque b WHERE b.vu = :vu")
     , @NamedQuery(name = "Bibliotheque.findFilm", query = "SELECT b.idfilm FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idfilm IS NOT NULL")
     , @NamedQuery(name = "Bibliotheque.findSerie", query = "SELECT b.idserie FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idserie IS NOT NULL")
-    , @NamedQuery(name = "Bibliotheque.delete", query = "DELETE b FROM Bibliotheque b WHERE b.iduser = :iduser")})
+    , @NamedQuery(name = "Bibliotheque.findBiblioByFilm", query = "SELECT b FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idfilm=:idfilm")
+    , @NamedQuery(name = "Bibliotheque.delete", query = "SELECT b FROM Bibliotheque b WHERE b.iduser = :iduser")})
 public class Bibliotheque implements Serializable {
 
     private static final long serialVersionUID = 1L;

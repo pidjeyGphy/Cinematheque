@@ -47,6 +47,8 @@ public class UtilisateurCtrl implements Serializable {
 
     public void addUser(Utilisateur u) {
         dao.add(u);
+        Stockage st = new Stockage(u.getIduser());
+        stdao.addStockage(st);
     }
 
     public UtilisateurDAO getDao() {
@@ -84,12 +86,20 @@ public class UtilisateurCtrl implements Serializable {
     public void deleteUtilisateur() {
         Stockage stock= daoStock.oneStock();
         Integer into= stock.getIdstock();
-        daobiblio.removeBibliothequeUser(into);
+        Utilisateur user =dao.findUtilisateur(into);
+        daobiblio.removeBibliothequeUser(user);
+        daoStock.removeStockage(into);
         dao.removeUtilisateur(into);
     }
 
     public void modifUtilisateur() {
         dao.updateUtilisateur(this.selectedUser);
+    }
+    
+    public void deconnexionUtilisateur(){
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        daoStock.removeStockage(into);
     }
 
     public Utilisateur connexion() throws ConnexionExecption {

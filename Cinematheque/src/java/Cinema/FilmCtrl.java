@@ -21,6 +21,16 @@ public class FilmCtrl implements Serializable{
     
     @EJB
     private FilmDAO daof; 
+    
+    @EJB
+    private StockageDAO daoStock;
+    
+    @EJB
+    private UtilisateurDAO daouser;
+    
+    @EJB
+    private BibliothequeDAO daoBiblio;
+    
     private Film selectedFilm;
     
     public FilmCtrl() {
@@ -53,6 +63,20 @@ public class FilmCtrl implements Serializable{
     
     public void modifFilm(){
         daof.updateFilm(this.selectedFilm);
+    }
+    
+        public void filmRecupBiblio(Film f) {
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        Bibliotheque b =daoBiblio.filmVersBiblio(user, f);
+        if(b.getVu()==false){
+            b.setVu(true);
+        }
+        else{
+            b.setVu(false);
+        }
+        daoBiblio.updateBibliotheque(b);
     }
     
 }

@@ -53,15 +53,24 @@ public class BibliothequeDAO {
         em.flush();
     }
     
-    public void removeBibliothequeUser(int iduser){
+    public void removeBibliothequeUser(Utilisateur iduser){
         Query query = em.createNamedQuery("Bibliotheque.delete");
         query.setParameter("iduser", iduser);
-        query.executeUpdate(); // Retourne un integer
-        
+        List<Bibliotheque> b=  query.getResultList();
+        for (int i=0;i<b.size();i++){
+            em.remove(b.get(i));
+        }
+        em.flush();
     }
     
     public void updateBibliotheque(Bibliotheque b){
         em.merge(b);
         em.flush();
     }
+    
+    public Bibliotheque filmVersBiblio(Utilisateur uti, Film fil){
+        Query query = em.createNamedQuery("Bibliotheque.findBiblioByFilm").setParameter("iduser",uti).setParameter("idfilm",fil);
+        return (Bibliotheque) query.getSingleResult();
+    }
+
 }

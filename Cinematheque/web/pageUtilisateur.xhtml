@@ -14,8 +14,8 @@
         <h:form>   
             <p:toolbar>
                 <f:facet name="right">
-                    <h:commandButton value="Supprimer mon compte" action="index"/> 
-                    <h:commandButton  value="Deconnexion" action='index'/>
+                    <h:commandButton value="Supprimer mon compte" action="index" actionListener="#{UtilisateurCtrl.deleteUtilisateur()}"/> 
+                    <h:commandButton  value="Deconnexion" action='index' actionListener="#{UtilisateurCtrl.deconnexionUtilisateur()}"/>
                 </f:facet>
 
                 <f:facet name="left">
@@ -25,19 +25,19 @@
         </h:form>
         
         <h:form id="filmform">
-            <p:dataList value="#{BibliothequeCtrl.filmBibliotheque}" var="serio" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
+            <p:dataList value="#{BibliothequeCtrl.filmBibliotheque}" var="filmo" type="unordered" itemType="none" paginator="true" rows="10" styleClass="paginated">
                 <f:facet name="header">
-                    Mes séries !
+                    Mes films !
                 </f:facet>
-                <p:commandLink update=":filmDetailo" oncomplete="PF('filmDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+                <p:commandLink update=":filmform:filmDetailo" oncomplete="PF('filmDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
                     <f:setPropertyActionListener value="#{filmo}" target="#{FilmCtrl.selectedFilm}" />
                     <h:outputText value="#{filmo.nomfilm}, #{filmo.datediffusion}" />
                 </p:commandLink>
                 <h:outputText value="#{filmo.nomfilm}, #{filmo.datediffusion}" style="display:inline-block"/>
             </p:dataList>
-        </h:form>
         
-        <p:dialog id="dialogfilm" header="Information sur la Série" widgetVar="filmDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        
+        <p:dialog id="dialogfilm" header="Information sur le film" widgetVar="filmDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
                 <p:outputPanel id="filmDetailo" style="text-align:center;">
                     <p:panelGrid  columns="2" rendered="#{not empty FilmCtrl.selectedFilm}" columnClasses="label,value"> 
                         <f:facet name="header">
@@ -53,8 +53,11 @@
                         <h:outputText value="#{FilmCtrl.selectedFilm.resumefilm}"/>
  
                     </p:panelGrid>
+                        <p:commandButton value="Changer la valeur vu" actionListener="#{FilmCtrl.filmRecupBiblio(FilmCtrl.selectedFilm)}"/>
                 </p:outputPanel>
             </p:dialog>
+            
+            </h:form>
 
         <br/>
         <br/>
@@ -64,13 +67,13 @@
                 <f:facet name="header">
                     Mes séries !
                 </f:facet>
-                <p:commandLink update=":serieDetailo" oncomplete="PF('serieDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+                <p:commandLink update=":serieform:serieDetailo" oncomplete="PF('serieDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
                     <f:setPropertyActionListener value="#{serio}" target="#{SerieCtrl.selectedSerie}" />
                     <h:outputText value="#{serio.nomserie}, #{serio.datedebut}" />
                 </p:commandLink>
                 <h:outputText value="#{serio.nomserie}, #{serio.datedebut}" style="display:inline-block"/>
             </p:dataList>
-        </h:form>
+        
         
         <p:dialog id="dialogserie" header="Information sur la Série" widgetVar="serieDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
                 <p:outputPanel id="serieDetailo" style="text-align:center;">
@@ -97,6 +100,8 @@
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
+            
+            </h:form>
             
         <br/>
         <br/>

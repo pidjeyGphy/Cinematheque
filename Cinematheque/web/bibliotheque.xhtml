@@ -33,7 +33,7 @@ and open the template in the editor.
         <h:form id="form">
             <p:dataGrid var="filmo" value="#{FilmCtrl.allFilm}" columns="4" layout="grid" rows="12"  paginator="true" id="films" 
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        rowsPerPageTemplate="8,12,16">
+                        rowsPerPageTemplate="4,8,12">
                 
                 <f:facet name="header">
                     Liste des films
@@ -84,7 +84,7 @@ and open the template in the editor.
         <h:form id="formserie" style="background-color: #B2DFDB">
             <p:dataGrid var="serio" value="#{SerieCtrl.allSerie}" columns="4" layout="grid" rows="12"  paginator="true" id="series" 
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        rowsPerPageTemplate="8,12,16" style="background-color: #B2DFDB">
+                        rowsPerPageTemplate="4,8,12" style="background-color: #B2DFDB">
                 
                 <f:facet name="header">
                     Liste des séries

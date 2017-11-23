@@ -102,5 +102,32 @@ public class BibliothequeCtrl implements Serializable{
         selectBiblio.setIduser(daouser.findUtilisateur(into));
         daoBiblio.add(selectBiblio);
     }
+    
+    public boolean test(){
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        int b = daoBiblio.total(user);
+        boolean bool;
+        if(b==0){
+            bool=false;
+        }
+        else{
+            bool=true;
+        }
+        return bool;
+    }
+    
+    public int stat(){
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        int i = daoBiblio.nombre(user);
+        int b = daoBiblio.total(user);
+        float result = (float) i/b;
+        float t=result*100;
+        int h = (int) t;
+        return h;
+    }
   
 }

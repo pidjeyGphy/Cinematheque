@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Bibliotheque.findFilm", query = "SELECT b.idfilm FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idfilm IS NOT NULL")
     , @NamedQuery(name = "Bibliotheque.findSerie", query = "SELECT b.idserie FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idserie IS NOT NULL")
     , @NamedQuery(name = "Bibliotheque.findBiblioByFilm", query = "SELECT b FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idfilm=:idfilm")
+    , @NamedQuery(name = "Bibliotheque.findBiblioBySerie", query = "SELECT b FROM Bibliotheque b WHERE b.iduser = :iduser AND b.idserie=:idserie")
+    , @NamedQuery(name = "Bibliotheque.total", query = "SELECT COUNT(b) FROM Bibliotheque b WHERE b.iduser = :iduser")
+    , @NamedQuery(name = "Bibliotheque.nombre", query = "SELECT COUNT(b) FROM Bibliotheque b WHERE b.iduser = :iduser AND b.vu=1")
     , @NamedQuery(name = "Bibliotheque.delete", query = "SELECT b FROM Bibliotheque b WHERE b.iduser = :iduser")})
 public class Bibliotheque implements Serializable {
 

@@ -78,5 +78,18 @@ public class FilmCtrl implements Serializable{
         }
         daoBiblio.updateBibliotheque(b);
     }
+        
+    public String affichevu(Film f) {
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        Bibliotheque b =daoBiblio.filmVersBiblio(user, f);
+        if(b.getVu()==false){
+            return ("Pas vu");
+        }
+        else{
+            return ("Vu");
+        }
+    }
     
 }

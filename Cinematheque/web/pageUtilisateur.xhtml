@@ -51,9 +51,11 @@
  
                         <h:outputText value="Résumé" />
                         <h:outputText value="#{FilmCtrl.selectedFilm.resumefilm}"/>
+                        
+                        <p:commandButton update=":filmform:filmDetailo :pbar" value="Avez vous vu ce film ?" actionListener="#{FilmCtrl.filmRecupBiblio(FilmCtrl.selectedFilm)}"/>
+                        <h:outputText value="#{FilmCtrl.affichevu(FilmCtrl.selectedFilm)}"/>
  
                     </p:panelGrid>
-                        <p:commandButton value="Changer la valeur vu" actionListener="#{FilmCtrl.filmRecupBiblio(FilmCtrl.selectedFilm)}"/>
                 </p:outputPanel>
             </p:dialog>
             
@@ -96,6 +98,9 @@
                         
                         <h:outputText value="Résumé" />
                         <h:outputText value="#{SerieCtrl.selectedSerie.resumeserie}"/>
+                        
+                        <p:commandButton update=":serieform:serieDetailo :pbar" value="Avez vous vu cette série ?" actionListener="#{SerieCtrl.serieRecupBiblio(SerieCtrl.selectedSerie)}"/>
+                        <h:outputText value="#{SerieCtrl.affichevubis(SerieCtrl.selectedSerie)}"/>
  
                     </p:panelGrid>
                 </p:outputPanel>
@@ -106,35 +111,9 @@
         <br/>
         <br/>
 
-        <h:form>
-            <p:progressBar value="50" labelTemplate="{value}%" displayOnly="true"/>
+        <h:form id="pbar">
+            <p:progressBar rendered="#{BibliothequeCtrl.test()}" value="#{BibliothequeCtrl.stat()}" labelTemplate="#{BibliothequeCtrl.stat()}%" displayOnly="true"/>
         </h:form>
-
-        <script type="text/javascript">
-            function start() {
-                PF('startButton1').disable();
-
-                window['progress'] = setInterval(function () {
-                    var pbClient = PF('pbClient'),
-                            oldValue = pbClient.getValue(),
-                            newValue = oldValue + 10;
-
-                    pbClient.setValue(pbClient.getValue() + 10);
-
-                    if (newValue === 100) {
-                        clearInterval(window['progress']);
-                    }
-
-
-                }, 1000);
-            }
-
-            function cancel() {
-                clearInterval(window['progress']);
-                PF('pbClient').setValue(0);
-                PF('startButton1').enable();
-            }
-        </script>
 
     </h:body>
 </html>

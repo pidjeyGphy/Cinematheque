@@ -72,5 +72,22 @@ public class BibliothequeDAO {
         Query query = em.createNamedQuery("Bibliotheque.findBiblioByFilm").setParameter("iduser",uti).setParameter("idfilm",fil);
         return (Bibliotheque) query.getSingleResult();
     }
+    
+    public Bibliotheque serieVersBiblio(Utilisateur uti, Serie ser){
+        Query query = em.createNamedQuery("Bibliotheque.findBiblioBySerie").setParameter("iduser",uti).setParameter("idserie",ser);
+        return (Bibliotheque) query.getSingleResult();
+    }
+    
+    public int nombre(Utilisateur uti){
+        Query query = em.createNamedQuery("Bibliotheque.nombre").setParameter("iduser",uti);
+        int pos = Integer.parseInt(""+query.getSingleResult());
+        return pos;
+    }
+    
+    public int total(Utilisateur uti){
+        Query query = em.createNamedQuery("Bibliotheque.total").setParameter("iduser",uti);
+        int pos = Integer.parseInt(""+query.getSingleResult());
+        return pos;
+    }
 
 }

@@ -21,7 +21,16 @@ import javax.inject.Named;
 public class SerieCtrl implements Serializable{
     
     @EJB
-    private SerieDAO daoSerie; 
+    private SerieDAO daoSerie;
+    
+    @EJB
+    private StockageDAO daoStock;
+    
+    @EJB
+    private UtilisateurDAO daouser;
+    
+    @EJB
+    private BibliothequeDAO daoBiblio;
     private Serie selectedSer; 
     
     public SerieCtrl() {
@@ -59,6 +68,33 @@ public class SerieCtrl implements Serializable{
     
     public void modifSerie(){
         daoSerie.updateSerie(this.selectedSer);
+    }
+    
+    public void serieRecupBiblio(Serie s) {
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        Bibliotheque b =daoBiblio.serieVersBiblio(user, s);
+        if(b.getVu()==false){
+            b.setVu(true);
+        }
+        else{
+            b.setVu(false);
+        }
+        daoBiblio.updateBibliotheque(b);
+    }
+        
+    public String affichevubis(Serie s) {
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        Bibliotheque b =daoBiblio.serieVersBiblio(user, s);
+        if(b.getVu()==false){
+            return ("Pas vu");
+        }
+        else{
+            return ("Vu");
+        }
     }
     
 }

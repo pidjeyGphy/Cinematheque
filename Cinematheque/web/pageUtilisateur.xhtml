@@ -79,6 +79,7 @@
         
         <p:dialog id="dialogserie" header="Information sur la Série" widgetVar="serieDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
                 <p:outputPanel id="serieDetailo" style="text-align:center;">
+                    <p:growl  id="msg"  />
                     <p:panelGrid  columns="2" rendered="#{not empty SerieCtrl.selectedSerie}" columnClasses="label,value"> 
                         <f:facet name="header">
                             <img src="res/images/#{SerieCtrl.selectedSerie.afficheserie}.jpg" style="width: 10%"/>
@@ -99,7 +100,9 @@
                         <h:outputText value="Résumé" />
                         <h:outputText value="#{SerieCtrl.selectedSerie.resumeserie}"/>
                         
-                        <p:commandButton update=":serieform:serieDetailo :pbar" value="Avez vous vu cette série ?" actionListener="#{SerieCtrl.serieRecupBiblio(SerieCtrl.selectedSerie)}"/>
+                        <p:commandButton update=":serieform:serieDetailo :pbar" value="Avez vous vu cette série ?" actionListener="#{SerieCtrl.serieRecupBiblio(SerieCtrl.selectedSerie)}">
+                            <p:ajax listener="#{SerieCtrl.addMessage(SerieCtrl.selectedSerie)}" update="msg" />
+                        </p:commandButton>
                         <h:outputText value="#{SerieCtrl.affichevubis(SerieCtrl.selectedSerie)}"/>
  
                     </p:panelGrid>

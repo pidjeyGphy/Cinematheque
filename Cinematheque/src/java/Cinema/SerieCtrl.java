@@ -8,6 +8,8 @@ package Cinema;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -95,6 +97,15 @@ public class SerieCtrl implements Serializable{
         else{
             return ("Vu");
         }
+    }
+    
+    public void addMessage(Serie s) {
+        Stockage stock= daoStock.oneStock();
+        Integer into= stock.getIdstock();
+        Utilisateur user =daouser.findUtilisateur(into);
+        Bibliotheque b =daoBiblio.serieVersBiblio(user, s);
+        String summary = b.getVu() ? "Checked" : "Unchecked";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
     }
     
 }
